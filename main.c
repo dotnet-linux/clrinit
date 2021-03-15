@@ -35,7 +35,7 @@ int main()
         "/dev",
         "devtmpfs",
         MS_NOSUID | MS_NOEXEC | MS_RELATIME,
-        "size=10240k,mode=755"))
+        "size=10240k,mode=755") && errno != EBUSY)
     {
         simple_printf("clrinit: Failed to mount /dev.\n");
     }
@@ -45,7 +45,7 @@ int main()
         "/proc",
         "proc",
         MS_NOSUID | MS_NOEXEC | MS_RELATIME | MS_NODEV,
-        NULL))
+        NULL) && errno != EBUSY)
     {
         simple_printf("clrinit: Failed to mount /proc.\n");
     }
@@ -55,7 +55,7 @@ int main()
         "/sys",
         "sysfs",
         MS_NOSUID | MS_NOEXEC | MS_RELATIME | MS_NODEV,
-        NULL))
+        NULL) && errno != EBUSY)
     {
         simple_printf("clrinit: Failed to mount /sys.\n");
     }
