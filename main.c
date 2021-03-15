@@ -60,6 +60,16 @@ int main()
         simple_printf("clrinit: Failed to mount /sys.\n");
     }
 
+    if (-1 == mount(
+        "tmpfs",
+        "/tmp",
+        "tmpfs",
+        0,
+        NULL))
+    {
+        simple_printf("clrinit: Failed to mount /tmp to tmpfs.\n");
+    }
+
     const char* envp[] =
     {
         "DOTNET_ROOT=/opt/minclr/dotnet",
