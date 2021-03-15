@@ -21,8 +21,8 @@ size_t simple_strlen(
 void simple_printf(
     const char* string)
 {
-    const int stderr_fd = 2;
-    write(stderr_fd, string, simple_strlen(string));
+    const int stdout_fd = 1;
+    write(stdout_fd, string, simple_strlen(string));
 }
 
 int main()
