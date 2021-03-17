@@ -10,26 +10,15 @@
 
 #include "nolibc.h"
 
-size_t simple_strlen(
-    const char* string_start)
-{
-    const char* string_end = string_start;
-    while (*string_end) ++string_end;
-    return string_end - string_start;
-}
-
 void simple_printf(
     const char* string)
 {
     const int stdout_fd = 1;
-    write(stdout_fd, string, simple_strlen(string));
+    write(stdout_fd, string, strlen(string));
 }
 
 int main()
 {
-    // Clear the screen.
-    simple_printf("\033[H\033[J");
-
     if (-1 == mount(
         "udev",
         "/dev",
